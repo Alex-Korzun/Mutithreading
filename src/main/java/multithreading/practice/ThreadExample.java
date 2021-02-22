@@ -11,8 +11,9 @@ public class ThreadExample extends Thread {
     public void run() {
         System.out.println("Thread example started working...");
         for (int i = 0; i < 100; i++) {
+            int count = counter.getCounter();
+            System.out.println(ThreadExample.currentThread().getName() + ": " + count);
             counter.setCounter(i);
-            System.out.println(counter);
         }
     }
 }
