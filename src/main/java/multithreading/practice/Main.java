@@ -5,5 +5,8 @@ public class Main {
         Counter counter = new Counter();
         ThreadExample thread = new ThreadExample(counter);
         thread.start();
+
+        RunnableExample runnable = new RunnableExample(counter);
+        new Thread(runnable).start();
     }
 }
