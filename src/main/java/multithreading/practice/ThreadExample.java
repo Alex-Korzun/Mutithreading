@@ -15,8 +15,7 @@ public class ThreadExample extends Thread {
     public void run() {
         logger.info("Thread example started working...");
         while (counter.getCounter() < COUNTING_LIMIT) {
-            int count = counter.increment();
-            logger.info(Thread.currentThread().getName() + " = " + count);
+            logger.info(Thread.currentThread().getName() + " = " + counter.increment());
         }
         logger.info("Thread example finished working...");
     }
