@@ -1,23 +1,23 @@
 package multithreading.practice.second;
 
-import org.apache.commons.collections4.ListUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import org.apache.commons.collections4.ListUtils;
 
-public class SummingByCallable {
+public class ExecutorServiceForSum {
     private static final int NUMBER_OF_THREADS = 4;
     private final List<Integer> values;
 
-    public SummingByCallable(List<Integer> values) {
+    public ExecutorServiceForSum(List<Integer> values) {
         this.values = values;
     }
 
     public int getSum() {
-        List<List<Integer>> partitions = ListUtils.partition(values, values.size() / NUMBER_OF_THREADS);
+        List<List<Integer>> partitions = ListUtils.partition(values,
+                values.size() / NUMBER_OF_THREADS);
         ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
         List<CallableExample> callableExamples = new ArrayList<>();
         for (List<Integer> part : partitions) {
@@ -37,6 +37,6 @@ public class SummingByCallable {
             }
         }
         executorService.shutdown();
-        return  result;
+        return result;
     }
 }

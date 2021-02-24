@@ -6,18 +6,18 @@ import org.junit.jupiter.api.Test;
 
 public class SummingByCallableTest {
     private SummingUtil summingUtil;
-    private SummingByCallable summingByCallable;
+    private ExecutorServiceForSum executorServiceForSum;
 
     @BeforeEach
     void setUp() {
         summingUtil = new SummingUtil();
-        summingByCallable = new SummingByCallable(summingUtil.getList());
+        executorServiceForSum = new ExecutorServiceForSum(summingUtil.getList());
     }
 
     @Test
     public void testSummingByCallable() {
         int expected = summingUtil.getSum();
-        int actual = summingByCallable.getSum();
+        int actual = executorServiceForSum.getSum();
         Assertions.assertEquals(expected, actual);
     }
 }
