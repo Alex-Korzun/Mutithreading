@@ -15,7 +15,7 @@ class SummingByForkJoinTest {
     }
 
     @Test
-    public void testRandomlyGeneratedList() {
+    public void testSummingByForkJoin() {
         int expected = summingUtil.getSum();
         int actual = forkJoinService.getSum();
         Assertions.assertEquals(expected, actual);
