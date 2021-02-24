@@ -1,12 +1,16 @@
 package multithreading.practice;
 
+import java.util.List;
+import multithreading.practice.second.SummingByCallable;
+import multithreading.practice.second.SummingByForkJoin;
+import multithreading.practice.second.SummingUtil;
+
 public class Main {
     public static void main(String[] args) {
-        Counter counter = new Counter();
-        ThreadExample thread = new ThreadExample(counter);
-        thread.start();
-
-        RunnableExample runnable = new RunnableExample(counter);
-        new Thread(runnable).start();
+        List<Integer> list = new SummingUtil().getList();
+        SummingByCallable callableSum = new SummingByCallable(list);
+        System.out.println(callableSum.getSum());
+        SummingByForkJoin forkSum = new SummingByForkJoin(list);
+        System.out.println(forkSum.getSum());
     }
 }
